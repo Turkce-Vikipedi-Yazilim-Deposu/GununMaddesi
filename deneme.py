@@ -3,10 +3,6 @@
 
 # gerekli kütüphaneleri dahil et
 import pywikibot
-import locale
-
-# locale ayarı
-locale.setlocale(locale.LC_ALL, 'tr_TR.utf8')
 
 site = pywikibot.Site('tr', 'wikipedia')
 page = pywikibot.Page(site, "Vikipedi:Deneme tahtası")

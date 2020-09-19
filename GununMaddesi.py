@@ -2,11 +2,8 @@
 # !/usr/bin/python3
 
 import pywikibot
-import locale
 import datetime
 from random import randint
-
-locale.setlocale(locale.LC_ALL, 'tr_TR.utf8')
 
 site = pywikibot.Site('tr', 'wikipedia')
 summaryAppendix = " --[[User:%s/GununMaddesi | Günün Maddesi Bot]]" %(site.username())

@@ -7,13 +7,13 @@ Eğer günün maddesi oluşturulmamış ise geçmiş günlerden rastgele bir GM 
 ## Kurulum
 
 * Kullanılacak bilgisayarda/sunucuda pywikibot kütüphanesi [kurulur ve konfigüre edilir](https://www.mediawiki.org/wiki/Manual:Pywikibot/Installation)
-* bBetikler (pywikibot dizini)/scripts alanına aktarılır
+* Betikler (pywikibot dizini)/scripts alanına aktarılır
 * ```deneme.py``` betiği çalıştırılır. [Deneme sayfası](https://tr.wikipedia.org/wiki/Vikipedi:Deneme_tahtas%C4%B1) üzerinde test yapılır
 * ```GununMaddesi.py``` betiği çalıştırılır. Program test edilir
 * Programı her gece otomatik çalıştırmak için [Toolforge](https://wikitech.wikimedia.org/) üzerine aşağıdaki [cron](https://en.wikipedia.org/wiki/Cron) komutu düzenlenerek kaydedilir.
   
 ```text
-55 23 * * *   /usr/bin/jsub    -N Vikipedi-GununMaddesi        -once -quiet python3 /data/project/mavrikant/pywikibot/pwb.py GununMaddesi.py
+55 23 * * *   /usr/bin/jsub    -N Vikipedi-GununMaddesi        -once -quiet python3 /data/project/mavrikant/pywikibot/pwb.py /data/project/mavrikant/GununMaddesi/GununMaddesi.py
 ```
 
 ## Geliştiriciler
