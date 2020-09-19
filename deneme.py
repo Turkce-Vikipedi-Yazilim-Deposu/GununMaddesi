@@ -1,29 +1,29 @@
 # -*- coding: utf-8 -*-
-# !/usr/bin/python
+# !/usr/bin/python3
 
-# mavri kütüphanesi yükle
-import mavri
-
-# json kütüphanesi yükle
+# gerekli kütüphaneleri dahil et
+import pywikibot
+import locale
 import json
 
-wiki='tr.wikipedia'
-username= 'Mavrikant Bot'
+# locale ayarı
+locale.setlocale(locale.LC_ALL, 'tr_TR.utf8')
 
-# Kullanıcı girişi yap
-xx = mavri.login(wiki, username)
+site = pywikibot.Site('tr', 'wikipedia')
+page = pywikibot.Page(site, "Vikipedi:Deneme tahtası")
 
 # Giriş denemesini sonucunu ekrana JSON ile düzenleyerek yazdır
-print json.dumps(json.loads(xx.text), sort_keys=True, indent=4)
+print(page.text)
 
 # 2 bölümü birbirinden ayır
-print "\n-------------------------------------------------------------------------\n" 
+print("\n-------------------------------------------------------------------------\n")
 
-# Deneme sayfasına mesaj ekle. 
-sonuc = mavri.appendtext_on_page('tr.wikipedia', 'Vikipedi:Deneme tahtası', '\n== mavribot test ==\nDeneme deneme 123 --~~~~', 'mavribot ile test yapıldı.', xx)
+# Deneme sayfasına mesaj ekle.
+page.text += '\n== mavribot test ==\nDeneme deneme 123 --~~~~'
+page.save("mavribot ile deneme mesajı ekleniyor")
 
 # Sonucu ekrana JSON ile düzenleyerek yazdır
-print json.dumps(json.loads(sonuc.text), sort_keys=True, indent=4)
+print(page.text)
 
 # Programı kapat
 exit(0)
