@@ -10,7 +10,7 @@ Eğer günün maddesi oluşturulmamış ise geçmiş günlerden rastgele bir GM 
 * betikler (pywikibot dizini)/scripts alanına aktarılır
 * ```deneme.py``` betiği çalıştırılır. [Deneme sayfası](https://tr.wikipedia.org/wiki/Vikipedi:Deneme_tahtas%C4%B1) üzerinde test yapılır
 * ```GununMaddesi.py``` çalıştırılır. Program test edilir
-* programı her gece otomatik çalıştırmak için [ToolsForge](https://wikitech.wikimedia.org/) üzerine aşağıdaki [cron](https://en.wikipedia.org/wiki/Cron) komutu düzenlenerek kaydedilir.
+* programı her gece otomatik çalıştırmak için [Toolforge](https://wikitech.wikimedia.org/) üzerine aşağıdaki [cron](https://en.wikipedia.org/wiki/Cron) komutu düzenlenerek kaydedilir.
   
 ```text
 35 23 * * *   /usr/bin/jsub    -N Vikipedi-GununMaddesi        -once -quiet python /data/project/mavrikant/GununMaddesi/GununMaddesi.py
