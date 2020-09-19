@@ -9,6 +9,7 @@ from random import randint
 locale.setlocale(locale.LC_ALL, 'tr_TR.utf8')
 
 site = pywikibot.Site('tr', 'wikipedia')
+summaryAppendix = " --[[User:%s/GununMaddesi | Günün Maddesi Bot]]" %(site.username())
 
 one_day = datetime.timedelta(days=1)
 baslangic = datetime.date(2015, 9, 1) # Bu tarihten öncesinde GM sorunlu. 
@@ -22,24 +23,22 @@ logPage = pywikibot.Page(site, 'User:'+site.username()+'/Log/Günün Maddesi')
 YarinSayfa = pywikibot.Page(site, 'Şablon:GM/' + gelecekTarihStr)
 
 if (YarinSayfa.text == '' or YarinSayfa.exists() == False):  # Yarının GM sayfası yok
-    Summary = 'Olumsuz'
-    Durum = '\n* {{Çapraz}}'
 
-    # Kaynak sayfa bul ve içeriğini kopyala
+    # Uygun Kaynak sayfa bul
     kaynakSayfa = pywikibot.Page(site, 'Şablon:GM/' + kaynakTarih.strftime("%Y-%m-%d"))
     while kaynakSayfa.text == '' or kaynakSayfa.exists() == False:
         kaynakTarih += one_day # Sayfa boş çıktı. Sonraki güne geç.
         kaynakSayfa = pywikibot.Page(site, 'Şablon:GM/' + kaynakTarih.strftime("%Y-%m-%d"))
 
-    # Kaynak sayfa ile gelecek GM sayfasını oluştur
+    # Kaynak sayfa'yı kopyalarak gelecek GM sayfasını oluştur
     YarinSayfa.text = kaynakSayfa.text
-    YarinSayfa.save('[[Şablon:GM/' + kaynakTarih.strftime("%Y-%m-%d") + ']] sayfasından kopyalandı.')
+    YarinSayfa.save('[[Şablon:GM/' + kaynakTarih.strftime("%Y-%m-%d") + ']] sayfasından kopyalandı.' + summaryAppendix)
+
+    logMessage= "{{Çapraz}} [[Şablon:GM/%s]]" %(gelecekTarihStr)
 
 else:  # Yarının GM sayfası oluşturulmuş. Süper.
-    Summary = 'Olumlu'
-    Durum = '\n* {{Tamam}}'
+    logMessage= "{{Tamam}} [[Şablon:GM/%s]]" %(gelecekTarihStr)
 
 # Log sayfasına rapor yaz
-Durum += " [[Şablon:GM/%s | %s]]" %(gelecekTarihStr,gelecekTarihStr)
-logPage.text += Durum
-logPage.save(Summary)
+logPage.text += "\n* "+logMessage
+logPage.save(logMessage + summaryAppendix)
