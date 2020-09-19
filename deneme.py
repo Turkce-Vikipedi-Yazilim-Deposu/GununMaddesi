@@ -19,8 +19,8 @@ print(page.text)
 print("\n-------------------------------------------------------------------------\n")
 
 # Deneme sayfasına mesaj ekle.
-page.text += '\n== mavribot test ==\nDeneme deneme 123 --~~~~'
-page.save("mavribot ile deneme mesajı ekleniyor")
+page.text += '\n== ' + site.username() + ' test ==\nDeneme deneme 123 --~~~~'
+page.save(site.username() + " ile deneme mesajı ekleniyor")
 
 # Sonucu ekrana JSON ile düzenleyerek yazdır
 print(page.text)
