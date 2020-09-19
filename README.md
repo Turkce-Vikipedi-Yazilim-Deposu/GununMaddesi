@@ -1,4 +1,4 @@
-[![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/) [![Pywikibot](https://img.shields.io/badge/Pywikibot-4.3.0-green.svg)](https://www.mediawiki.org/wiki/Manual:Pywikibot) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # Günün maddesi
 
@@ -6,14 +6,14 @@ Eğer günün maddesi oluşturulmamış ise geçmiş günlerden rastgele bir GM 
 
 ## Kurulum
 
-* kullanılacak bilgisayarda/sunucuda pywikibot kütüphanesi [kurulur ve konfigüre edilir](https://www.mediawiki.org/wiki/Manual:Pywikibot/Installation)
-* betikler (pywikibot dizini)/scripts alanına aktarılır
+* Kullanılacak bilgisayarda/sunucuda pywikibot kütüphanesi [kurulur ve konfigüre edilir](https://www.mediawiki.org/wiki/Manual:Pywikibot/Installation)
+* bBetikler (pywikibot dizini)/scripts alanına aktarılır
 * ```deneme.py``` betiği çalıştırılır. [Deneme sayfası](https://tr.wikipedia.org/wiki/Vikipedi:Deneme_tahtas%C4%B1) üzerinde test yapılır
-* ```GununMaddesi.py``` çalıştırılır. Program test edilir
-* programı her gece otomatik çalıştırmak için [Toolforge](https://wikitech.wikimedia.org/) üzerine aşağıdaki [cron](https://en.wikipedia.org/wiki/Cron) komutu düzenlenerek kaydedilir.
+* ```GununMaddesi.py``` betiği çalıştırılır. Program test edilir
+* Programı her gece otomatik çalıştırmak için [Toolforge](https://wikitech.wikimedia.org/) üzerine aşağıdaki [cron](https://en.wikipedia.org/wiki/Cron) komutu düzenlenerek kaydedilir.
   
 ```text
-35 23 * * *   /usr/bin/jsub    -N Vikipedi-GununMaddesi        -once -quiet python /data/project/mavrikant/GununMaddesi/GununMaddesi.py
+55 23 * * *   /usr/bin/jsub    -N Vikipedi-GununMaddesi        -once -quiet python3 /data/project/mavrikant/pywikibot/pwb.py GununMaddesi.py
 ```
 
 ## Geliştiriciler
