@@ -13,6 +13,10 @@ import os
 
 bot_name = 'Mavrikant Bot'
 bot_password = os.environ.get('WIKI_BOT_PASSWORD')
+
+print(f"Using bot name: {bot_name}")
+print(f"Using bot password: {bot_password}")
+ 
 if not bot_password:
     raise ValueError("WIKI_BOT_PASSWORD environment variable is not set")
 
