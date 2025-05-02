@@ -1,18 +1,25 @@
 # -*- coding: utf-8 -*-
-# !/usr/bin/python3
+#!/usr/bin/python3
 
-# gerekli kütüphaneleri dahil et
-import pywikibot
+try:
+    import pywikibot
+except ImportError:
+    print("Pywikibot not found. Please install it using: pip3 install pywikibot")
+    exit(1)
 
-site = pywikibot.Site('tr', 'wikipedia')
-page = pywikibot.Page(site, "Vikipedi:Deneme tahtası")
+try:
+    site = pywikibot.Site('tr', 'wikipedia')
+    site.login()  # Explicitly login
+    
+    page = pywikibot.Page(site, "Vikipedi:Deneme tahtası")
+    
+    username = site.username()
+    page.text = '\n== ' + username + ' test ==\nDeneme deneme 123 --~~~~'
+    page.save(username + " ile deneme mesajı ekleniyor")
+    
+    print(page.text)
+except Exception as e:
+    print(f"An error occurred: {e}")
+    exit(1)
 
-# Deneme sayfasına mesaj ekle.
-page.text += '\n== ' + site.username() + ' test ==\nDeneme deneme 123 --~~~~'
-page.save(site.username() + " ile deneme mesajı ekleniyor")
-
-# Sayfanın son halini ekrana yazdır
-print(page.text)
-
-# Programı kapat
 exit(0)
